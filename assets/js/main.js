@@ -29,8 +29,11 @@ button.addEventListener('click', function(){
     let level = parseInt(document.querySelector('#level').value)
     // salvo in una variabile il numero corrispondente al numero di elementi per ogni riga in base al livello
     numLevel = Math.sqrt(level)
-    //richiamo la funzione che mi genera l'array di numeri randomici
+    //richiamo la funzione che mi genera l'array di numeri randomici che andrà a riempire le griglie
     let arrayNumbers = randomNumberSolo(level,1,level)
+    //richiamo la funzione che mi genera l'array di numeri randomici che andrà a creare le 16 bombe
+    let arrayBombs = randomNumberSolo(16,1,level)
+    console.log(arrayBombs)
 
 
     //faccio partire un ciclo che mi generi gli elementi nel DOM
@@ -39,9 +42,18 @@ button.addEventListener('click', function(){
         const divBox = containerCampo.appendChild(createMyElement('div', `box-${numLevel}`, `${arrayNumbers[i-1]}`))
         //rendo cliccabili tutti gli elementi
         divBox.addEventListener('click', function(){
-        this.classList.toggle('blue')
-        console.log(this.innerText)
-    })}
+            if(arrayBombs.includes(arrayNumbers[i-1])){
+                this.classList.toggle('red')
+                this.innerHTML=`<i class="fa-solid fa-bomb fa-shake" style="color: #000000;"></i>`
+                console.log(this.innerText)
+                let main = document.querySelector('main')
+                main.innerHTML+=`<h1 class="position-absolute text-uppercase text-danger">hai perso!!!</h1>`
+            }else{
+                this.classList.toggle('blue')
+                console.log(this.innerText)
+            }
+        })
+    }
 
     //faccio scomparire il pulsante Play 
     button.classList.add('d-none')
