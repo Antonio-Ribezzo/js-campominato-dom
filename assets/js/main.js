@@ -35,7 +35,8 @@ button.addEventListener('click', function(){
     let arrayBombs = randomNumberSolo(16,1,level)
     console.log(arrayBombs)
 
-
+    //creo una variabile "counter"
+    let counter = []
     //faccio partire un ciclo che mi generi gli elementi nel DOM
     for(let i = 1; i <=level; i++){
         //stampo dentro l'elemento i div che associo ad una variabile"divBox"
@@ -43,17 +44,25 @@ button.addEventListener('click', function(){
         //rendo cliccabili tutti gli elementi
         divBox.addEventListener('click', function(){
             if(arrayBombs.includes(arrayNumbers[i-1])){
-                this.classList.toggle('red')
+                this.classList.add('red')
                 this.innerHTML=`<i class="fa-solid fa-bomb fa-shake" style="color: #000000;"></i>`
                 console.log(this.innerText)
                 let main = document.querySelector('main')
-                main.innerHTML+=`<h1 class="position-absolute text-uppercase text-danger">hai perso!!!</h1>`
+                main.innerHTML+=`
+                <div class="position-absolute text-center">
+                    <h1 class="text-uppercase text-danger" style="font-size: 10rem;">hai perso!!!</h1>
+                    <h2 class="text-uppercase text-danger" style="font-size: 5rem;">hai totalizzato ${counter.length}   punti</h2>
+                </div>
+                `
             }else{
-                this.classList.toggle('blue')
+                this.classList.add('blue')
                 console.log(this.innerText)
+                counter.push(parseInt(this.innerText)/parseInt(this.innerText))
+                console.log(counter)
             }
         })
     }
+
 
     //faccio scomparire il pulsante Play 
     button.classList.add('d-none')
