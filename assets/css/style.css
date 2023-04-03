@@ -1,0 +1,65 @@
+.debug{
+    border: 1px solid red;
+}
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300; 
+}
+
+span{
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.blue{
+    background-color: blue;
+}
+
+/* header */
+header{
+    height: 10%;
+    width: 100%;
+}
+
+h1{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 800;
+}
+
+/* main */
+main{
+    height: 82%;
+    background-color: #7fffd4;
+}
+
+#container-campo{
+    width: 40rem;
+    height: 40rem;
+}
+ 
+.box-10,
+.box-9,
+.box-7{
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-10{
+    flex-basis: calc(100% /10);
+}
+
+.box-9{
+    flex-basis: calc(100% /9);
+}
+
+.box-7{
+    flex-basis: calc(100% /7);
+}
+
+/* footer */
+footer{
+    height: 8%;
+}
