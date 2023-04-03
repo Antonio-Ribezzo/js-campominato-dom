@@ -51,6 +51,7 @@ main{
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .box-10{
